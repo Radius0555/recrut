@@ -5,12 +5,11 @@
     <div class="column">
         <h1>FORMULARZ REKRUTACYJNY</h1>
     </div>
-    <form method="post" action="{{ route('recruitment.store') }}">
+    <form method="post" action="{{ route('recruitment.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="column">
             <section class="section">
                 <h2>DANE OSOBOWE</h2>
-                <p>https://www.tutorialspoint.com/laravel/laravel_file_uploading</p>
             </section>
             <section class="section">
                 <input class="input" name="firstName" type="text" placeholder="Imię">
@@ -36,9 +35,9 @@
             </section>
             <section class="section">
                 <div class="select">
-                    <select name="area">
-                        @foreach($recruitment as $recrut)
-                            <option value="{{$recruitment->id}}">{{$recruitment->name}}</option>
+                    <select name="department_id">
+                        @foreach($departments as $department)
+                            <option value="{{$department->id}}">{{$department->name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -64,7 +63,7 @@
                 <div class="field">
                     <div class="file is-medium is-boxed">
                         <label class="file-label">
-                            <input class="file-input" type="file" name="pathCV">
+                            <input class="file-input" type="file" name="pathDoc">
                             <span class="file-label">
                                 <h3>Dodaj inne dokumenty aplikacyjne</h3>
                             </span>
@@ -76,7 +75,7 @@
                 <div class="field">
                     <div class="file is-medium is-boxed">
                         <label class="file-label">
-                            <input class="file-input" type="file" name="pathDoc">
+                            <input class="file-input" type="text" name="info">
                             <span class="file-label">
                                 <textarea class="textarea" placeholder="Informacje dodatkowe"></textarea>
                             </span>
@@ -88,6 +87,15 @@
         <div class="control">
             <button class="button is-danger" type="submit">Aplikuj</button>
         </div>
+        @if($errors->any())
+            <div class="notification is-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
     </form>
 </div>
 @endsection

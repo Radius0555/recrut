@@ -19,10 +19,10 @@ class CreateRecruitmentsTable extends Migration
             $table->string('lastName');
             $table->string('telephone');
             $table->string('email');
-            $table->string('area');
+            $table->bigInteger('department_id');
             $table->string('pathCV');
-            $table->string('pathDoc');
-            $table->text('info');
+            $table->string('pathDoc')->nullable();
+            $table->text('info')->nullable();
             $table->timestamps();
         });
     }

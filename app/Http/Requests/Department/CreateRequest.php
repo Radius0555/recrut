@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Recrut;
+namespace App\Http\Requests\Department;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,14 +24,7 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'firstName' => 'required|string',
-            'lastName' => 'required|string',
-            'telephone' => 'required|string',
-            'email' => 'required|email',
-            'department_id' => 'required|exists:departments,id',
-            'pathCV' => 'required|file',
-            'pathDoc' => 'nullable|file',
-            'info' => 'string|nullable',
+            'name' => 'required|string'
         ];
     }
 }

@@ -6,7 +6,6 @@ use App\Http\Requests\Department\CreateRequest;
 use App\Http\Requests\Department\EditRequest;
 use App\Models\Department;
 
-
 class DepartmentController extends Controller
 {
     /**

@@ -43,23 +43,19 @@ class RecruitmentController extends Controller
         $pathCV = $request->file('pathCV');
         $pathDoc = $request->file('pathDoc');
 
-        $pathCV->store('local');
-        if ($pathDoc) {
-            $pathDoc->store('local');
-        }
-
         $recruitment->firstName = $request->input('firstName');
         $recruitment->lastName = $request->input('lastName');
         $recruitment->telephone = $request->input('telephone');
         $recruitment->email = $request->input('email');
         $recruitment->department_id = $request->input('department_id');
-        $recruitment->pathCV = $request->pathCV->path();
+        $recruitment->pathCV = $pathCV->store('documents', 'public');
         if($pathDoc){
-            $recruitment->pathDoc = $request->pathDoc->path();
+            $recruitment->pathDoc = $pathDoc->store('documents', 'public');
         }
 
         $recruitment->info = $request->input('info');
         $recruitment->save();
+
         return redirect()->route('recruitment.info', ['pathCV', 'pathDoc']);
     }
 

@@ -28,8 +28,8 @@
                 <td>{{ $recruit->telephone }}</td>
                 <td>{{ $recruit->email }}</td>
                 <td>{{ $recruit->department->name }}</td>
-                <td>{{ $recruit->pathCV }}</td>
-                <td>{{ $recruit->pathDoc }}</td>
+                <td><a href="{{  Storage::url($recruit->pathCV) }}">{{ $recruit->pathCV }}</a></td>
+                <td><a href="{{ Storage::url($recruit->pathDoc) }}">{{ $recruit->pathDoc }}</a></td>
                 <td>{{ $recruit->info }}</td>
                 <td><a class="button is-danger" href="{{ route('recruitment.delete', $recruit->id) }}">Usuń</a></td>
                 </tr>

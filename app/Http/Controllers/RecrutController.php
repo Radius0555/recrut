@@ -14,7 +14,7 @@ class RecrutController extends Controller
     public function index()
     {
         $recruits = Recruitment::with('department')->get();
-        
+
         return view('recrut.index', compact('recruits'));
     }
 }
